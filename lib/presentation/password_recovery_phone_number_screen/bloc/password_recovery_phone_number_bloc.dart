@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import 'package:country_pickers/country.dart';import 'package:country_pickers/utils/utils.dart';import 'package:hari_s_application3/presentation/password_recovery_phone_number_screen/models/password_recovery_phone_number_model.dart';part 'password_recovery_phone_number_event.dart';part 'password_recovery_phone_number_state.dart';/// A bloc that manages the state of a PasswordRecoveryPhoneNumber according to the event that is dispatched to it.
+class PasswordRecoveryPhoneNumberBloc extends Bloc<PasswordRecoveryPhoneNumberEvent, PasswordRecoveryPhoneNumberState> {PasswordRecoveryPhoneNumberBloc(PasswordRecoveryPhoneNumberState initialState) : super(initialState) { on<PasswordRecoveryPhoneNumberInitialEvent>(_onInitialize); on<ChangeCountryEvent>(_changeCountry); }
+
+_changeCountry(ChangeCountryEvent event, Emitter<PasswordRecoveryPhoneNumberState> emit, ) { emit(state.copyWith(selectedCountry: event.value)); } 
+_onInitialize(PasswordRecoveryPhoneNumberInitialEvent event, Emitter<PasswordRecoveryPhoneNumberState> emit, ) async  { emit(state.copyWith(phoneNumberController: TextEditingController())); } 
+ }

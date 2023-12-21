@@ -1,0 +1,14 @@
+import 'bloc/password_recovery_email_bloc.dart';import 'models/password_recovery_email_model.dart';import 'package:flutter/material.dart';import 'package:hari_s_application3/core/app_export.dart';import 'package:hari_s_application3/core/utils/validation_functions.dart';import 'package:hari_s_application3/widgets/app_bar/appbar_leading_iconbutton.dart';import 'package:hari_s_application3/widgets/app_bar/custom_app_bar.dart';import 'package:hari_s_application3/widgets/custom_elevated_button.dart';import 'package:hari_s_application3/widgets/custom_floating_text_field.dart';
+// ignore_for_file: must_be_immutable
+class PasswordRecoveryEmailScreen extends StatelessWidget {PasswordRecoveryEmailScreen({Key? key}) : super(key: key);
+
+GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+static Widget builder(BuildContext context) { return BlocProvider<PasswordRecoveryEmailBloc>(create: (context) => PasswordRecoveryEmailBloc(PasswordRecoveryEmailState(passwordRecoveryEmailModelObj: PasswordRecoveryEmailModel()))..add(PasswordRecoveryEmailInitialEvent()), child: PasswordRecoveryEmailScreen()); } 
+@override Widget build(BuildContext context) { mediaQueryData = MediaQuery.of(context); return BlocBuilder<PasswordRecoveryEmailBloc, PasswordRecoveryEmailState>(builder: (context, state) {return SafeArea(child: Scaffold(resizeToAvoidBottomInset: false, appBar: _buildAppBar(context), body: Form(key: _formKey, child: Container(width: double.maxFinite, padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 36.v), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text("msg_password_recovery".tr, style: theme.textTheme.headlineSmall), SizedBox(height: 19.v), Text("msg_enter_your_email".tr, style: CustomTextStyles.bodyMediumGray600), SizedBox(height: 64.v), BlocSelector<PasswordRecoveryEmailBloc, PasswordRecoveryEmailState, TextEditingController?>(selector: (state) => state.emailController, builder: (context, emailController) {return CustomFloatingTextField(controller: emailController, labelText: "lbl_email_address".tr, labelStyle: theme.textTheme.bodyLarge!, hintText: "lbl_email_address".tr, textInputAction: TextInputAction.done, textInputType: TextInputType.emailAddress, validator: (value) {if (value == null || (!isValidEmail(value, isRequired: true))) {return "err_msg_please_enter_valid_email".tr;} return null;});}), SizedBox(height: 72.v), CustomElevatedButton(text: "lbl_send_otp_code".tr), SizedBox(height: 5.v)])))));}); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar(BuildContext context) { return CustomAppBar(leadingWidth: double.maxFinite, leading: AppbarLeadingIconbutton(imagePath: ImageConstant.imgClose, margin: EdgeInsets.fromLTRB(24.h, 8.v, 311.h, 8.v), onTap: () {onTapClose(context);})); } 
+
+/// Navigates to the previous screen.
+onTapClose(BuildContext context) { NavigatorService.goBack(); } 
+ }
