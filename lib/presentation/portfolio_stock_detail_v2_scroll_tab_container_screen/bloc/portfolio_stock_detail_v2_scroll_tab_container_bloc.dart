@@ -1,0 +1,5 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import 'package:hari_s_application3/presentation/portfolio_stock_detail_v2_scroll_tab_container_screen/models/portfolio_stock_detail_v2_scroll_tab_container_model.dart';part 'portfolio_stock_detail_v2_scroll_tab_container_event.dart';part 'portfolio_stock_detail_v2_scroll_tab_container_state.dart';/// A bloc that manages the state of a PortfolioStockDetailV2ScrollTabContainer according to the event that is dispatched to it.
+class PortfolioStockDetailV2ScrollTabContainerBloc extends Bloc<PortfolioStockDetailV2ScrollTabContainerEvent, PortfolioStockDetailV2ScrollTabContainerState> {PortfolioStockDetailV2ScrollTabContainerBloc(PortfolioStockDetailV2ScrollTabContainerState initialState) : super(initialState) { on<PortfolioStockDetailV2ScrollTabContainerInitialEvent>(_onInitialize); }
+
+_onInitialize(PortfolioStockDetailV2ScrollTabContainerInitialEvent event, Emitter<PortfolioStockDetailV2ScrollTabContainerState> emit, ) async  {  } 
+ }

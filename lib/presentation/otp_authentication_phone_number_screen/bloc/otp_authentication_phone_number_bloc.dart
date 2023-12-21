@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import 'package:country_pickers/country.dart';import 'package:country_pickers/utils/utils.dart';import 'package:hari_s_application3/presentation/otp_authentication_phone_number_screen/models/otp_authentication_phone_number_model.dart';part 'otp_authentication_phone_number_event.dart';part 'otp_authentication_phone_number_state.dart';/// A bloc that manages the state of a OtpAuthenticationPhoneNumber according to the event that is dispatched to it.
+class OtpAuthenticationPhoneNumberBloc extends Bloc<OtpAuthenticationPhoneNumberEvent, OtpAuthenticationPhoneNumberState> {OtpAuthenticationPhoneNumberBloc(OtpAuthenticationPhoneNumberState initialState) : super(initialState) { on<OtpAuthenticationPhoneNumberInitialEvent>(_onInitialize); on<ChangeCountryEvent>(_changeCountry); }
+
+_changeCountry(ChangeCountryEvent event, Emitter<OtpAuthenticationPhoneNumberState> emit, ) { emit(state.copyWith(selectedCountry: event.value)); } 
+_onInitialize(OtpAuthenticationPhoneNumberInitialEvent event, Emitter<OtpAuthenticationPhoneNumberState> emit, ) async  { emit(state.copyWith(phoneNumberController: TextEditingController())); } 
+ }
